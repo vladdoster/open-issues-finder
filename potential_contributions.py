@@ -73,7 +73,7 @@ def send_email(cfg, links):
     server.sendmail(
         email,
         email,
-        f"""Hi {name},\nWe found the following projects you might be interested in contributing too.\n\n{links}""")
+        f"""Subject: Potential Contributor\n\nHi {name},\nWe found the following projects you might be interested in contributing too.\n\n{links}""")
     server.quit()
 
 
