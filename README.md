@@ -15,3 +15,8 @@ python potential_contributions.py
 ```
 
 3. Look in your email for a list of potential projects to contribute too!         
+
+
+### TODO
+- Check if issues are stale or have a PR open
+- Make systemd unit file or a cronjob so it runs periodically
