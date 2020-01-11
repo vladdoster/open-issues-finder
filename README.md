@@ -19,7 +19,7 @@ python potential_contributions.py
 3. Look in your email for a list of potential projects to contribute too!         
 
 ### Cronjob
-To set as a cronjob, the following is how I have it setup. It run everyday at 9am.
+To set as a cronjob, the following is how I have it setup. It runs everyday at 9am.
 ```
 0 9 * * * /usr/bin/python3.8 /home/<USERNAME>/.local/bin/potential_contributions.py >/dev/null 2>&1
 ```
