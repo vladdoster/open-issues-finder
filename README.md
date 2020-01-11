@@ -11,7 +11,7 @@ This app allows you to plug in your programming interests and issue labels to he
 2. Run the script with Python >= 3.6
 
 ```
-python3.6 potential_contributions.py
+python potential_contributions.py
 ```
 
 3. Look in your email for a list of potential projects to contribute too!         
