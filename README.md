@@ -21,7 +21,7 @@ python potential_contributions.py
 ### Cronjob
 To set as a cronjob, the following is how I have it setup. It runs everyday at 9am.
 ```
-0 9 * * * /usr/bin/python3.8 /home/<USERNAME>/.local/bin/potential_contributions.py >/dev/null 2>&1
+0 9 * * * /usr/bin/python3.8 /home/vlad/.local/bin/potential_contributions.py >/dev/null 2>&1
 ```
 
 ### TODO
