@@ -57,7 +57,7 @@ def get_section(cfg, section):
 
     entries = [str(x[0]).lower() for x in entries]
     # Make sure user provides >= 1 interest
-    if len(entries) == 0:
+    if not entries:
         print(f"Add at least one {section[:-1]} in your config.ini")
         exit(1)
     else:
