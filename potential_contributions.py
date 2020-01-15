@@ -44,7 +44,7 @@ def get_html_links(links):
 
 
 def get_section(cfg, section):
-    entries = 0
+    entries = []
     try:
         # Normalize interests strings
         entries = cfg.items(section)
