@@ -35,11 +35,10 @@ def get_html_links(links):
             # TODO: Implement pagination using modulo math to get older issues
             html_link = r.get('items')[random.randrange(0, len(r.get('items')), 1)]
             html_links.append(html_link.get('html_url'))
-            print(html_link.get('html_url'))
         except httpx.exceptions.HTTPError as e:
             print(f"Requesting from Github too often\n{e}")
         except Exception as e:
-            print(f"{e}")
+            print(f"Something unexpected occurred...\n{e}")
     return html_links
 
 
@@ -48,10 +47,10 @@ def get_section(cfg, section):
     try:
         # Normalize interests strings
         entries = cfg.items(section)
-    except configparser.NoSectionError as e:
+    except configparser.NoSectionError:
         print(f"Error: Add a [{section}] section to your config.ini")
         exit(1)
-    except OSError as e:
+    except OSError:
         print("Error: No config.ini found.")
         exit(1)
     
