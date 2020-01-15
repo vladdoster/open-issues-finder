@@ -61,8 +61,7 @@ def get_section(cfg, section):
     if not entries:
         print(f"Add at least one {section[:-1]} in your config.ini")
         exit(1)
-    else:
-        return entries
+    return entries
 
 
 def send_email(cfg, links):
