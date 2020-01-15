@@ -12,7 +12,6 @@ def main():
     interests, labels = get_section(cfg, section='Interests'), get_section(cfg, section='Labels')
     links = get_html_links(get_github_projects(cfg, interests=interests, labels=labels))
     send_email(cfg, links)
-    print("Successfully sent gh repos to your email!")
 
 
 def get_github_projects(cfg, interests, labels):
@@ -77,6 +76,8 @@ def send_email(cfg, links):
         email,
         f"""Subject: Potential Contributor\n\nHi {name},\nWe found the following projects you might be interested in contributing too.\n\n{links}""")
     server.quit()
+    print("Successfully sent Github repos to your email!")
+
 
 
 if __name__ == '__main__':
