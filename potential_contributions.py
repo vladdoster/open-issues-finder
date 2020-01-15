@@ -54,14 +54,13 @@ def get_section(cfg, section):
     except OSError as e:
         print("Error: No config.ini found.")
         exit(1)
-
-    entries = [str(x[0]).lower() for x in entries]
+    
     # Make sure user provides >= 1 interest
-    # I learned that you should do len(entries)==0, but just not. Python will return false if len == 0
+    # I learned that you should not do len(entries)==0, but just not. Python will return false if len == 0
     if not entries:
         print(f"Add at least one {section[:-1]} in your config.ini")
         exit(1)
-    return entries
+    return [str(x[0]).lower() for x in entries]
 
 
 def send_email(cfg, links):
