@@ -25,5 +25,4 @@ To set as a cronjob, the following is how I have it setup. It runs everyday at 9
 ```
 
 ### TODO
-- Check if issues are stale or have a PR open
 - [x] Make systemd unit file or a cronjob so it runs periodically
