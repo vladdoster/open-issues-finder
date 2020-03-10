@@ -33,6 +33,7 @@ def gen_gh_interests_urls(cfg, interests, labels):
 
 
 def multiprocess_links(urls):
+    print("> Finding some projects...")
     pool = Pool(10)
     results = [x for x in pool.imap_unordered(get_gh_link, urls) if x is not None]
     return results
@@ -47,9 +48,9 @@ def get_gh_link(url):
         gh_link = choice(r.get('items')).get('html_url')
         return gh_link
     except httpx.exceptions.HTTPError:
-        print("Requesting from Github too often")
+        print("Error: Requesting from Github too often")
     except Exception as error:
-        print("Something unexpected occurred...\n{}".format(error))
+        print("Something unexpected occurred :{\n{}".format(error))
 
 
 def get_section(cfg, section):
@@ -82,7 +83,7 @@ def send_email(cfg, links):
         to_addrs=email,
         msg=f"""Subject: Potential Contributor\n\nHi {name},\nWe found the following projects you might be interested in contributing too.\n\n{links}""")
     server.quit()
-    print("Successfully sent Github repos to your email!")
+    print("> Successfully sent Github repos to your email!")
 
 
 if __name__ == '__main__':
