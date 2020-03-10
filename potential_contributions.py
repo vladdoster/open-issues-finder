@@ -56,15 +56,14 @@ def get_section(cfg, section):
     try:
         # Normalize interests strings
         entries = cfg.items(section)
+        if not entries:
+        print("Add at least one {} in your config.ini".format(section[:-1]))
+        sys.exit(1)
     except configparser.NoSectionError:
         print("Error: Add a [{}] section to your config.ini".format(section))
         sys.exit(1)
     except OSError:
         print("Error: No config.ini found.")
-        sys.exit(1)
-
-    if not entries:
-        print("Add at least one {} in your config.ini".format(section[:-1]))
         sys.exit(1)
     return [str(x[0]).lower() for x in entries]
 
