@@ -47,7 +47,7 @@ def get_gh_link(url):
         gh_link = choice(r.get('items')).get('html_url')
         return gh_link
     except httpx.exceptions.HTTPError:
-        print(f"Requesting from Github too often")
+        print("Requesting from Github too often")
     except Exception as error:
         print("Something unexpected occurred...\n{}".format(error))
 
