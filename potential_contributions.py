@@ -1,5 +1,4 @@
 import configparser
-import pprint
 import smtplib
 import sys
 from multiprocessing.pool import ThreadPool as Pool
@@ -9,7 +8,6 @@ from time import sleep
 import httpx
 from httpx import get
 
-pp = pprint.PrettyPrinter(indent=1)
 
 
 def main():
@@ -17,20 +15,20 @@ def main():
     cfg.read('config.ini')
     interests, labels = get_section(cfg, section='Interests'), get_section(cfg, section='Labels')
     links = multiprocess_links(gen_gh_interests_urls(cfg=cfg, interests=interests, labels=labels))
-    # pp.pprint(links)
     send_email(cfg, links)
 
 
 def gen_gh_interests_urls(cfg, interests, labels):
     projects_limit = cfg['User']['projects_limit']
-    if projects_limit is None:
+    if projects_limit == "":
         print("Set a project limit in config")
         sys.exit(1)
     links = []
     for x in range(int(projects_limit)):
         interest, label = choice(interests), choice(labels)
         links.append(
-            f"https://api.github.com/search/issues?q={interest}+label:{label}+state:open&sort=created&order=desc")
+            "https://api.github.com/search/issues?q={}+label:{}+state:open&sort=created&order=desc".format(interest,
+                                                                                                           label))
     return links
 
 
@@ -51,25 +49,22 @@ def get_gh_link(url):
     except httpx.exceptions.HTTPError:
         print(f"Requesting from Github too often")
     except Exception as error:
-        print(f"Something unexpected occurred...\n{error}")
+        print("Something unexpected occurred...\n{}".format(error))
 
 
 def get_section(cfg, section):
-    entries = []
     try:
         # Normalize interests strings
         entries = cfg.items(section)
     except configparser.NoSectionError:
-        print(f"Error: Add a [{section}] section to your config.ini")
+        print("Error: Add a [{}] section to your config.ini".format(section))
         sys.exit(1)
     except OSError:
         print("Error: No config.ini found.")
         sys.exit(1)
 
-    # Make sure user provides >= 1 interest
-    # I learned that you should not do len(entries)==0, but just not. Python will return false if len == 0
     if not entries:
-        print(f"Add at least one {section[:-1]} in your config.ini")
+        print("Add at least one {} in your config.ini".format(section[:-1]))
         sys.exit(1)
     return [str(x[0]).lower() for x in entries]
 
