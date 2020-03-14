@@ -5,7 +5,7 @@ import pprint
 import smtplib
 import sys
 from multiprocessing.pool import ThreadPool as Pool
-from random import *
+from random import choice, randint
 from time import sleep
 
 import httpx
@@ -78,7 +78,7 @@ def send_email(cfg, links):
         logger.info("Here are the projects we would have emailed you:\n{}".format(pp.pformat(links)))
         sys.exit(1)
     server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
-    # If using Gmail, generate an app password @ https://myaccount.google.com/apppasswords
+    # If using gmail, generate an app password @ https://myaccount.google.com/apppasswords
     server.login(user=email, password=password)
     links = '\n'.join(links)
     server.sendmail(
