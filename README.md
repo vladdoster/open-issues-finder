@@ -26,7 +26,7 @@ Last Modified time: 2020-07-01 02:24:04
 
 ## Usage
 
-1. Fill out the [config.ini](cofig.ini) with your interests. The interests and labels have some prepopulated to show you what it expects.
+1. Fill out the [config.ini](config.ini) with your interests. The interests and labels have some prepopulated to show you what it expects.
 2. Requires only >=Python 3.x.x and no external dependencies!
 
 ```bash
