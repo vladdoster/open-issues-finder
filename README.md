@@ -11,8 +11,8 @@ Having trouble finding an OS project to contribute too? Have projects sent to yo
 
 This script allows you to plug in your programming interests & issue labels which is used to find projects fitting your criteria. Hopefully it helps you find an engaging project, fast!
 
-![stdout](https://github.com/vladdoster/potential_contributions/blob/master/.repo-assets/stdout_scrot.png)
-![Email](https://github.com/vladdoster/potential_contributions/blob/master/.repo-assets/email_scrot.png)
+![Stdout](.repo-assets/stdout_scrot.png)
+![Email](.repo-assets/email_scrot.png)
 
 ## Usage
 
