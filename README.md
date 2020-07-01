@@ -80,7 +80,7 @@ ExecStart=/usr/bin/potential-contributions-finder
 WantedBy=multi-user.target
 ```
 
-##### potential-contributor.timer
+##### /etc/systemd/system/potential-contributor.timer
 
 ```bash
 [Unit]
@@ -96,8 +96,7 @@ AccuracySec=1s
 WantedBy=timers.target
 ```
 
-If, for some reason your system is not playing nicely with `ExecStart` + absolute path. You can also
-give `ExecStart` a direct sh command like so
+If, for some reason your system is not playing nicely with `ExecStart` + `absolute path`. Pass `ExecStart` a direct sh command
 
 ```bash
 ExecStart=/bin/sh -c "python3 /usr/bin/potential-contributions-finder"
