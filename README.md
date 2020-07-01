@@ -2,7 +2,7 @@
 Author: Vlad Doster <mvdoster@gmail.com>
 Date: 2020-06-30 19:15:59
 Last Modified by: Vlad Doster <mvdoster@gmail.com>
-Last Modified time: 2020-06-30 20:03:06
+Last Modified time: 2020-06-30 21:26:41
 ---
 
 # Potential Contributor
@@ -16,7 +16,6 @@ This app allows you to plug in your programming interests and issue labels to he
 ## Usage
 
 1. Fill out the [config.ini](cofig.ini) with your interests. The interests and labels have some prepopulated to show you what it expects.
-
 2. Requires only >=Python 3.x.x and no external dependencies!
 
 ```bash
