@@ -1,0 +1,24 @@
+[tool.black]
+# No, 80-column terminals in 2020 isn't "reasonable" any more as far as I'm concerned.
+# People commonly used 132-column terminals even back in the '80s
+line-length = 140
+target-version = ['py37']
+include = '\.pyi?$'
+exclude = '''
+
+(
+  /(
+      \.eggs         # exclude a few common directories in the
+    | \.git          # root of the project
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | _build
+    | buck-out
+    | build
+    | dist
+  )/
+  | config.ini       # exclude config.ini
+)
+'''

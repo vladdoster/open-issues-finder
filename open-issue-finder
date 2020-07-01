@@ -1,0 +1,108 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+# Author: Vlad Doster <mvdoster@gmail.com>
+# Date: 2020-06-30 20:03:53
+# Last Modified by: Vlad Doster <mvdoster@gmail.com>
+# Last Modified time: 2020-07-01 02:07:54
+
+import configparser
+import itertools
+import logging
+import os
+import random
+import re
+import smtplib
+import sys
+import time
+from collections import namedtuple
+from multiprocessing.pool import ThreadPool as Pool
+
+import httpx
+
+
+def gen_query_urls(cfg, ints, lbls):
+    logger.debug("Generating Github issue URLs\nInterests: {0}\nLabels: {1}".format(ints, lbls))
+    gh_api_query_url = "https://api.github.com/search/issues?q={0}+label:{1}+state:open&sort=created&order=desc"
+    try:
+        return [
+            gh_api_query_url.format(random.choice(ints), random.choice(lbls))
+            for _ in itertools.repeat(None, int(cfg["User"]["projects_limit"]))
+        ]
+    except ValueError:
+        sys.exit(logger.error("Invalid project limit value set in config.ini. It should be an integer."))
+
+
+def get_gh_link(url):
+    time.sleep(random.randint(1, 2))
+    try:
+        r = httpx.get(url)
+        r.raise_for_status()
+        return random.choice(r.json().get("items")).get("html_url")
+    except httpx.HTTPError as e:
+        logger.warning("Encountering Github API throttling")
+    except Exception as e:
+        logger.error("Uh-oh, {0} experienced an unexpected bit flip from a solar flare. {1}".format(sys.argv[0], e))
+
+
+def multiprocess_links(urls):
+    logger.info("Looking high and low for cool projects...")
+    return [x for x in Pool(10).imap_unordered(get_gh_link, urls) if x is not None]
+
+
+def send_email(cfg, links):
+    EmailCreds = namedtuple("EmailCreds", ["name", "email", "password"])
+    e_c = EmailCreds(name=cfg["User"]["name"], email=cfg["Email"]["address"], password=cfg["Email"]["password"],)
+    n_links = len(links)
+    if any(credential == "" for credential in list(e_c)):
+        logger.warning("One of the Email credentials in config.ini is empty in config.ini. Please reconcile and re-run")
+        write_to_file(e_c.name, n_links, links)
+    try:
+        server = smtplib.SMTP_SSL("smtp.gmail.com", 465)
+        server.login(user=e_c.email, password=e_c.password)
+        server.sendmail(
+            from_addr=e_c.email,
+            to_addrs=e_c.email,
+            msg="""
+            Subject: Potential Contributor\n
+            Hi {0},
+            We found the following {1} OS projects you might be interested in contributing too.\n
+            Links:{2}
+            """.format(
+                e_c.name, n_links, "".join(["\n{0:>12}. {1}".format(idx, link) for idx, link in enumerate(links, 1)]),
+            ),
+        )
+    except smtplib.SMTPException as e:
+        logger.error("Sending email ran into the following issue:\n{0}".format(e))
+    server.quit()
+    sys.exit(logger.info("Successfully sent list of project to {0}".format(e_c.name)))
+
+
+def write_to_file(name, n_links, links):
+    proj_output = """
+        Hi {0},
+        We found the following {1} OS projects looking for contributers.\n
+        Links:{2}
+        """.format(
+        name, n_links, "".join(["\n{0:>12}. {1}".format(idx, link) for idx, link in enumerate(links, 1)]),
+    )
+    f = open("open-issue-projects.txt", "w")
+    f.writelines(proj_output)
+    sys.exit(logger.info(proj_output))
+
+
+def main():
+    logger.info("Starting process...")
+    filename = r"config.ini"
+    config = configparser.ConfigParser(allow_no_value=True)
+    config.read(filename)
+    interests, labels = list(config._sections.get("Programming Interests").keys()), list(config._sections.get("Issue Labels").keys())
+    send_email(
+        config, multiprocess_links(gen_query_urls(cfg=config, ints=interests, lbls=labels)),
+    )
+
+
+if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO, format="[{levelname}] {message}", style="{")
+    logger = logging.getLogger()
+    main()

@@ -2,16 +2,17 @@
 Author: Vlad Doster <mvdoster@gmail.com>
 Date: 2020-06-30 19:15:59
 Last Modified by: Vlad Doster <mvdoster@gmail.com>
-Last Modified time: 2020-06-30 21:26:41
+Last Modified time: 2020-07-01 02:24:04
 ---
 
 # Potential Contributor
 
 Having trouble finding an OS project to contribute too? Have projects sent to you that need help!
 
-This app allows you to plug in your programming interests and issue labels to help you find Open Source projects to contribute to.
+This script allows you to plug in your programming interests & issue labels which is used to find projects fitting your criteria. Hopefully it helps you find an engaging project, fast!
 
-![](https://github.com/vladdoster/potential_contributions/blob/master/assets/email_screenshot.png)
+![stdout](https://github.com/vladdoster/potential_contributions/blob/master/.repo-assets/stdout_scrot.png)
+![Email](https://github.com/vladdoster/potential_contributions/blob/master/.repo-assets/email_scrot.png)
 
 ## Usage
 
@@ -19,9 +20,11 @@ This app allows you to plug in your programming interests and issue labels to he
 2. Requires only >=Python 3.x.x and no external dependencies!
 
 ```bash
-python3 potential-contributions-finder
+python3 open-issue-finder
 ```
-3. Look in your email for a list of potential projects to contribute too!
+
+3. If no email credentials supplied, projects are logged to stdout and a .txt file is written with name of `open-issue-projects.txt`.
+   If email credentials supplied, look in your email for a list of potential projects looking for contributors!
 
 ## Set and forget
 
@@ -32,8 +35,9 @@ chmod +x potential-contributions-finder
 ```
 
 2. Copy to desired host location:
-**Note**: `potential-contributions-finder` and `config.ini` should be in same directory.
-**Sys-Admins** would say it should be placed in `/usr/bin`, but I prefer `$HOME/.local/bin/`. It really comes down to preference.
+   **Note**: `potential-contributions-finder` and `config.ini` should be in same directory.
+   **Sys-Admins** would say it should be placed in `/usr/bin`, but I prefer `$HOME/.local/bin/`. It really comes down to preference.
+
 ```bash
 cp potential-contributions-finder confing.ini $HOME/.local/vim
 ```
@@ -110,4 +114,12 @@ systemctl enable potential-contributor.service potential-contributor.timer
 
 systemctl start potential-contributor.service potential-contributor.timer
 ```
+
+### TODO
+
+[ ]: Clean up edge cases around GitHub throttling
+[ ]: Allow for the file to keep growing so you can have a list of possible projects.
+[ ]: Add CLI options such as `--help` and `--verbose`
+
+### Open an issue if you see something I can add/fix to better this project!
 
