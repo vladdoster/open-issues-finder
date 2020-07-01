@@ -4,7 +4,7 @@
 # Author: Vlad Doster <mvdoster@gmail.com>
 # Date: 2020-06-30 20:03:53
 # Last Modified by: Vlad Doster <mvdoster@gmail.com>
-# Last Modified time: 2020-06-30 20:13:24
+# Last Modified time: 2020-06-30 20:16:43
 
 import configparser
 import itertools
@@ -18,8 +18,8 @@ from multiprocessing.pool import ThreadPool as Pool
 
 import httpx
 
-logging.basicConfig(level=logging.INFO, fmt="[%(levelname)s] %(message)s")
 logger = logging.getLogger()
+logging.basicConfig(level=logging.INFO, format="[%(levelname)s] %(message)s")
 
 
 def main():
