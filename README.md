@@ -21,7 +21,6 @@ This app allows you to plug in your programming interests and issue labels to he
 ```bash
 python3 potential-contributions-finder
 ```
-
 3. Look in your email for a list of potential projects to contribute too!
 
 ## Set and forget
@@ -33,11 +32,11 @@ chmod +x potential-contributions-finder
 ```
 
 2. Copy to desired host location:
-   **Note**: `potential-contributions-finder` and `config.ini` should be in same directory.
-   **Sys-Admins** would say it should be placed in `/usr/bin`, but I prefer `$HOME/.local/bin/`. It really comes down to preference.
-   ```bash
-   cp potential-contributions-finder confing.ini $HOME/.local/vim
-   ```
+**Note**: `potential-contributions-finder` and `config.ini` should be in same directory.
+**Sys-Admins** would say it should be placed in `/usr/bin`, but I prefer `$HOME/.local/bin/`. It really comes down to preference.
+```bash
+cp potential-contributions-finder confing.ini $HOME/.local/vim
+```
 
 ### Use a `cronjob` to run script on a schedule.
 
@@ -80,7 +79,7 @@ ExecStart=/usr/bin/potential-contributions-finder
 WantedBy=multi-user.target
 ```
 
-##### potential-contributor.timer
+##### /etc/systemd/system/potential-contributor.timer
 
 ```bash
 [Unit]
@@ -96,8 +95,7 @@ AccuracySec=1s
 WantedBy=timers.target
 ```
 
-If, for some reason your system is not playing nicely with `ExecStart` + absolute path. You can also
-give `ExecStart` a direct sh command like so
+If, for some reason your system is not playing nicely with `ExecStart` + `absolute path`. Pass `ExecStart` a direct sh command
 
 ```bash
 ExecStart=/bin/sh -c "python3 /usr/bin/potential-contributions-finder"
