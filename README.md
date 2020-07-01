@@ -36,7 +36,7 @@ python3 open-issue-finder
 3. If no email credentials supplied, projects are logged to stdout and a .txt file is written with name of `open-issue-projects.txt`.
    If email credentials supplied, look in your email for a list of potential projects looking for contributors!
 
-## Set and forget
+## Run on a schedule
 
 1. Make script executable:
 
@@ -54,6 +54,8 @@ cp potential-contributions-finder confing.ini $HOME/.local/vim
 
 ### Use a `cronjob` to run script on a schedule.
 
+----
+
 The following is how have it running on my VPS. It runs everyday at 9am.
 
 ```bash
@@ -62,6 +64,8 @@ The following is how have it running on my VPS. It runs everyday at 9am.
 
 1. [Get up to speed on what cron is](https://wiki.archlinux.org/index.php/Cron)
 2. [crontab guru - online crontab editor](https://crontab.guru/)
+
+----
 
 ### Systemd service
 
@@ -125,11 +129,15 @@ systemctl enable potential-contributor.service potential-contributor.timer
 systemctl start potential-contributor.service potential-contributor.timer
 ```
 
+----
+
 ### TODO
 
 - [ ] : Clean up edge cases around GitHub throttling
 - [ ] : Allow for the file to keep growing so you can have a list of possible projects.
 - [ ] : Add CLI options such as `--help` and `--verbose`
+
+----
 
 ### Open an issue if you see something I can add/fix to better this project!
 
