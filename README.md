@@ -3,16 +3,26 @@ Author: Vlad Doster <mvdoster@gmail.com>
 Date: 2020-06-30 19:15:59
 Last Modified by: Vlad Doster <mvdoster@gmail.com>
 Last Modified time: 2020-07-01 02:24:04
+
 ---
 
-# Potential Contributor
+<div align=center>
 
-Having trouble finding an OS project to contribute too? Have projects sent to you that need help!
+# Open Issue Finder
 
-This script allows you to plug in your programming interests & issue labels which is used to find projects fitting your criteria. Hopefully it helps you find an engaging project, fast!
+### Plug in your programming interests & select issue labels to be used to find projects fitting your criteria. Hopefully it helps ease the trouble of finding an engaging project that needs help!
 
-![Stdout](.repo-assets/stdout_scrot.png)
-![Email](.repo-assets/email_scrot.png)
+<img src=".repo-assets/stdout_scrot.png"
+     data-canonical-src=".repo-assets/stdout_scrot.png"
+     width="700"
+     height="300" />
+     
+<img src=".repo-assets/email_scrot.png"
+     data-canonical-src=".repo-assets/email_scrot.png"
+     width="700"
+     height="300" />
+     
+</div>
 
 ## Usage
 
@@ -117,9 +127,9 @@ systemctl start potential-contributor.service potential-contributor.timer
 
 ### TODO
 
-[ ]: Clean up edge cases around GitHub throttling
-[ ]: Allow for the file to keep growing so you can have a list of possible projects.
-[ ]: Add CLI options such as `--help` and `--verbose`
+- [ ] : Clean up edge cases around GitHub throttling
+- [ ] : Allow for the file to keep growing so you can have a list of possible projects.
+- [ ] : Add CLI options such as `--help` and `--verbose`
 
 ### Open an issue if you see something I can add/fix to better this project!
 
