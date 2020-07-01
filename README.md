@@ -22,7 +22,6 @@ This app allows you to plug in your programming interests and issue labels to he
 ```bash
 python3 potential-contributions-finder
 ```
-
 3. Look in your email for a list of potential projects to contribute too!
 
 ## Set and forget
@@ -34,11 +33,11 @@ chmod +x potential-contributions-finder
 ```
 
 2. Copy to desired host location:
-   **Note**: `potential-contributions-finder` and `config.ini` should be in same directory.
-   **Sys-Admins** would say it should be placed in `/usr/bin`, but I prefer `$HOME/.local/bin/`. It really comes down to preference.
-   ```bash
-   cp potential-contributions-finder confing.ini $HOME/.local/vim
-   ```
+**Note**: `potential-contributions-finder` and `config.ini` should be in same directory.
+**Sys-Admins** would say it should be placed in `/usr/bin`, but I prefer `$HOME/.local/bin/`. It really comes down to preference.
+```bash
+cp potential-contributions-finder confing.ini $HOME/.local/vim
+```
 
 ### Use a `cronjob` to run script on a schedule.
 
