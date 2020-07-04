@@ -41,11 +41,11 @@ python3 open-issue-finder
 1. Make script executable:
 
 ```bash
-chmod +x potential-contributions-finder
+chmod +x open-issues-finder
 ```
 
 2. Copy to desired host location:
-   **Note**: `potential-contributions-finder` and `config.ini` should be in same directory.
+   **Note**: `open-issues-finder` and `config.ini` should be in same directory.
    **Sys-Admins** would say it should be placed in `/usr/bin`, but I prefer `$HOME/.local/bin/`. It really comes down to preference.
 
 ```bash
@@ -59,7 +59,7 @@ cp potential-contributions-finder confing.ini $HOME/.local/vim
 The following is how have it running on my VPS. It runs everyday at 9am.
 
 ```bash
-0 9 * * * /usr/bin/python3.8 /home/vlad/.local/bin/potential_contributions.py >/dev/null 2>&1
+0 9 * * * /usr/bin/python3.8 /home/vlad/.local/bin/open-issues-finder >/dev/null 2>&1
 ```
 
 1. [Get up to speed on what cron is](https://wiki.archlinux.org/index.php/Cron)
@@ -72,13 +72,13 @@ The following is how have it running on my VPS. It runs everyday at 9am.
 1. Create the `.service` file in `/etc/systemd/system`. I'd name it something like `potential-contributor.service`
 
 ```bash
-touch /etc/systemd/system/potential-contributor.{service,timer}
+touch /etc/systemd/system/open-issues-finder.{service,timer}
 ```
 
 2. Edit the `.service` file
 
 ```bash
-vim -O potential-contributor.service potential-contributor.timer
+vim -O open-issues-finder.service potential-contributor.timer
 ```
 
 3. The contents would look like this.
@@ -87,21 +87,21 @@ vim -O potential-contributor.service potential-contributor.timer
 
 ```bash
 [Unit]
-Description=Send N \# of projects that align with programming interests
+Description=Find projects with open issues and align with your programming interests
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/potential-contributions-finder
+ExecStart=/usr/bin/open-issues-finder
 
 [Install]
 WantedBy=multi-user.target
 ```
 
-##### /etc/systemd/system/potential-contributor.timer
+##### /etc/systemd/system/open-issues-finder.timer
 
 ```bash
 [Unit]
-Description=Run potential-contributions-finder every 24 hours
+Description=Run open-issues-finder every 24 hours
 Requires=potential-contributor.service
 
 [Timer]
@@ -113,10 +113,10 @@ AccuracySec=1s
 WantedBy=timers.target
 ```
 
-If, for some reason your system is not playing nicely with `ExecStart` + `absolute path`. Pass `ExecStart` a direct sh command
+If, for some reason your system is not playing nicely with `ExecStart` + `absolute path` or you just want to be different. Pass `ExecStart` a direct sh command
 
 ```bash
-ExecStart=/bin/sh -c "python3 /usr/bin/potential-contributions-finder"
+ExecStart=/bin/sh -c "python3 /usr/bin/open-issues-finder"
 ```
 
 4. Exit vim. I'll wait...
@@ -124,9 +124,7 @@ ExecStart=/bin/sh -c "python3 /usr/bin/potential-contributions-finder"
 5. Enable & start newly created service
 
 ```bash
-systemctl enable potential-contributor.service potential-contributor.timer
-
-systemctl start potential-contributor.service potential-contributor.timer
+systemctl enable --now open-issues-finder.service open-issues-finder.timer
 ```
 
 ----
