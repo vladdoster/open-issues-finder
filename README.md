@@ -49,10 +49,10 @@ chmod +x open-issues-finder
    **Sys-Admins** would say it should be placed in `/usr/bin`, but I prefer `$HOME/.local/bin/`. It really comes down to preference.
 
 ```bash
-cp potential-contributions-finder confing.ini $HOME/.local/vim
+cp open-issues-finder confing.ini $HOME/.local
 ```
 
-### Use a `cronjob` to run script on a schedule.
+### Cron job
 
 ----
 
@@ -65,9 +65,9 @@ The following is how have it running on my VPS. It runs everyday at 9am.
 1. [Get up to speed on what cron is](https://wiki.archlinux.org/index.php/Cron)
 2. [crontab guru - online crontab editor](https://crontab.guru/)
 
-----
-
 ### Systemd service
+
+----
 
 1. Create the `.service` file in `/etc/systemd/system`. I'd name it something like `potential-contributor.service`
 
