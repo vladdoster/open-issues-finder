@@ -49,7 +49,7 @@ chmod +x open-issues-finder
    **Sys-Admins** would say it should be placed in `/usr/bin`, but I prefer `$HOME/.local/bin/`. It really comes down to preference.
 
 ```bash
-cp open-issues-finder confing.ini $HOME/.local
+cp open-issues-finder config.ini $HOME/.local
 ```
 
 ### Cron job
