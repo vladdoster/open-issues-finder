@@ -137,5 +137,13 @@ systemctl enable --now open-issues-finder.service open-issues-finder.timer
 
 ----
 
-### Open an issue if you see something I can add/fix to better this project!
 
+## Author
+
+These programs were created by [Vlad Doster](http://vdoster.com).
+
+This project is [hosted on GitHub](https://github.com/vladdoster/open-issues-finder). Please feel free to submit pull requests.
+
+## License
+
+Copyright © 2019–2020 Vlad Doster. This program is released under the ISC license, which you can find in the file [LICENSE.md](LICENSE.md).
