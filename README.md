@@ -10,7 +10,7 @@ Last Modified time: 2020-07-01 02:24:04
 
 # Open Issue Finder
 
-### Plug in your programming interests & select issue labels to be used to find projects fitting your criteria. Hopefully it helps ease the trouble of finding an engaging project that needs help!
+### Plug in your programming interests & select issue labels to find open issues fitting your criteria. Hopefully it helps ease the trouble of finding an engaging project that needs help!
 
 <img src=".repo-assets/stdout_scrot.png"
      data-canonical-src=".repo-assets/stdout_scrot.png"
