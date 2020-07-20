@@ -86,20 +86,16 @@ def write_to_file(name, n_links, links):
         """.format(
         name, n_links, "".join(["\n{0:>12}. {1}".format(idx, link) for idx, link in enumerate(links, 1)]),
     )
-    f = open("open-issue-projects.txt", "w")
-    f.writelines(proj_output)
+    open("open-issue-projects.txt", "w").writelines(proj_output).close()
     sys.exit(logger.info(proj_output))
 
 
 def main():
     logger.info("Starting process...")
     filename = r"config.ini"
-    config = configparser.ConfigParser(allow_no_value=True)
-    config.read(filename)
+    config = configparser.ConfigParser(allow_no_value=True).read(filename)
     interests, labels = list(config._sections.get("Programming Interests").keys()), list(config._sections.get("Issue Labels").keys())
-    send_email(
-        config, multiprocess_links(gen_query_urls(cfg=config, ints=interests, lbls=labels)),
-    )
+    send_email(config, multiprocess_links(gen_query_urls(cfg=config, ints=interests, lbls=labels)))
 
 
 if __name__ == "__main__":
