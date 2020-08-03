@@ -146,4 +146,4 @@ This project is [hosted on GitHub](https://github.com/vladdoster/open-issues-fin
 
 ## License
 
-Copyright © 2019–2020 Vlad Doster. This program is released under the ISC license, which you can find in the file [LICENSE.md](LICENSE.md).
+Copyright © 2019–2020 Vlad Doster. This program is released under the GPLv3 license, which you can find in the file [LICENSE](LICENSE).
