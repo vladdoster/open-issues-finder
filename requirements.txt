@@ -2,7 +2,7 @@ certifi==2020.6.20
 chardet==3.0.4
 h11==0.10.0
 h2==3.2.0
-hpack==3.0.0
+hpack==4.0.0
 hstspreload==2020.9.2
 httpx==0.14.3
 hyperframe==6.0.0
