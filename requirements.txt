@@ -4,7 +4,7 @@ h11==0.10.0
 h2==4.0.0
 hpack==4.0.0
 hstspreload==2020.9.29
-httpx==0.15.4
+httpx==0.15.5
 hyperframe==6.0.0
 idna==2.10
 rfc3986==1.4.0
