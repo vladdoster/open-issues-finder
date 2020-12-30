@@ -1,16 +1,10 @@
----
-Author: Vlad Doster <mvdoster@gmail.com>
-Date: 2020-06-30 19:15:59
-Last Modified by: Vlad Doster <mvdoster@gmail.com>
-Last Modified time: 2020-07-01 02:24:04
-
----
-
-<div align=center>
-
 # Open Issue Finder
 
-### Add programming interests & select issue labels to find open issues fitting your criteria. Hopefully it helps ease the trouble of finding an engaging project that needs help!
+Find open issues fitting your programming interests. Hopefully, it helps to find an exciting project that needs help!
+
+[![DeepSource](https://deepsource.io/gh/vladdoster/open-issues-finder.svg/?label=active+issues&show_trend=true)](https://deepsource.io/gh/vladdoster/open-issues-finder/?ref=repository-badge)
+
+## Screenshots
 
 <img src=".repo-assets/stdout_scrot.png"
      data-canonical-src=".repo-assets/stdout_scrot.png"
@@ -22,8 +16,6 @@ Last Modified time: 2020-07-01 02:24:04
      width="700"
      height="300" />
      
-</div>
-
 ## Usage
 
 1. Fill out the [config.ini](config.ini) with your interests. The interests and labels have some prepopulated to show you what it expects.
@@ -33,20 +25,20 @@ Last Modified time: 2020-07-01 02:24:04
 python3 open-issue-finder
 ```
 
-3. If no email credentials supplied, projects are logged to stdout and a .txt file is written with name of `open-issue-projects.txt`.
-   If email credentials supplied, look in your email for a list of potential projects looking for contributors!
+3. If no email credentials are supplied, projects are logged to stdout, and a .txt file is written with the name of `open-issue-projects.txt`.
+   If email credentials are supplied, look in your email for a list of potential projects looking for contributors!
 
 ## Run on a schedule
 
-1. Make script executable:
+1. Make the script executable:
 
 ```bash
 chmod +x open-issues-finder
 ```
 
-2. Copy to desired host location:
-   **Note**: `open-issues-finder` and `config.ini` should be in same directory.
-   **Sys-Admins** would say it should be placed in `/usr/bin`, but I prefer `$HOME/.local/bin/`. It really comes down to preference.
+2. Copy to the desired host location:
+   **Note**: `open-issues-finder` and `config.ini` should be in the same directory.
+   **Sys-Admins would place it in `/usr/bin`, but I prefer `$HOME/.local/bin/`. It comes down to preference.
 
 ```bash
 cp open-issues-finder config.ini $HOME/.local
@@ -56,7 +48,7 @@ cp open-issues-finder config.ini $HOME/.local
 
 ----
 
-The following is how have it running on my VPS. It runs everyday at 9am.
+The following is how I have it running on my VPS. It runs every day at 9 am.
 
 ```bash
 0 9 * * * /usr/bin/python3.8 /home/vlad/.local/bin/open-issues-finder >/dev/null 2>&1
@@ -87,7 +79,7 @@ vim -O open-issues-finder.service potential-contributor.timer
 
 ```bash
 [Unit]
-Description=Find projects with open issues and align with your programming interests
+Description=Find projects with open issues and align with your programming interests.
 
 [Service]
 Type=oneshot
@@ -113,13 +105,13 @@ AccuracySec=1s
 WantedBy=timers.target
 ```
 
-If, for some reason your system is not playing nicely with `ExecStart` + `absolute path` or you just want to be different. Pass `ExecStart` a direct sh command
+If your system is not playing nicely with `ExecStart` + `absolute path` or want it located elsewhere, then pass `ExecStart` a direct sh command.
 
 ```bash
 ExecStart=/bin/sh -c "python3 /usr/bin/open-issues-finder"
 ```
 
-4. Exit vim. I'll wait...
+4. Exit vim. I'll wait
 
 5. Enable & start newly created service
 
@@ -140,10 +132,10 @@ systemctl enable --now open-issues-finder.service open-issues-finder.timer
 
 ## Author
 
-These programs were created by [Vlad Doster](http://vdoster.com).
+It was created by [Vlad Doster](http://vdoster.com).
 
 This project is [hosted on GitHub](https://github.com/vladdoster/open-issues-finder). Please feel free to submit pull requests.
 
 ## License
 
-Copyright © 2019–2020 Vlad Doster. This program is released under the GPLv3 license, which you can find in the file [LICENSE](LICENSE).
+Copyright © 2019–2020 Vlad Doster. Released under the GPLv3 license, you can find it in the file [LICENSE](LICENSE).
