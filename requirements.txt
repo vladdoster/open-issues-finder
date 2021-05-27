@@ -10,4 +10,4 @@ hyperframe==6.0.0
 idna==3.2
 rfc3986==1.4.0
 sniffio==1.2.0
-urllib3==1.26.4
+urllib3==1.26.5
