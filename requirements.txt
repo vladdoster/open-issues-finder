@@ -4,7 +4,7 @@ chardet==5.0.0
 h11==0.14.0
 h2==4.1.0
 hpack==4.0.0
-hstspreload==2022.9.1
+hstspreload==2022.10.1
 httpx==0.18.2
 hyperframe==6.0.1
 idna==3.4
